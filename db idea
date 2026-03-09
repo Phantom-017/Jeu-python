@@ -1,0 +1,30 @@
+# stockage de 10 personnages jouables avec leurs stats
+
+Heroes=  {
+    "Saber" : {"ATK" : 15 , "DEF" : 10, "HP" : 100},
+    "Caster" : {"ATK" : 20 , "DEF" : 5, "HP" : 80},
+    "Archer" : {"ATK" : 18 , "DEF" : 7 , "HP" : 90},
+    "Assassin" : {"ATK" : 22 , "DEF" : 8 , "HP" : 85},
+    "Lancer" : {"ATK" : 14 , "DEF" : 12 , "HP" : 110},
+    "Wizard" : {"ATK" : 25 , "DEF" : 3 , "HP" : 70},
+    "Avenger" : {"ATK" : 17 , "DEF" : 15 , "HP" : 120},
+    "Pilgrim" : {"ATK" : 19 , "DEF" : 9 , "HP" : 95},
+    "Berserker" : {"ATK" : 23 , "DEF" : 6 , "HP" : 105},
+    "Rider" : {"ATK" : 16 , "DEF" : 11 , "HP" : 100},
+}
+
+# stockage de plusieurs monstres avec leurs stats
+
+Monsters = {
+    "Goblin" : {"ATK" : 5 , "DEF" : 2 , "HP" : 30},
+    "Orc" : {"ATK" : 10 , "DEF" : 5 , "HP" : 50},
+    "Troll" : {"ATK" : 15 , "DEF" : 8 , "HP" : 80},
+    "Skeleton" : {"ATK" : 7 , "DEF" : 3 , "HP" : 40},
+    "Dragon" : {"ATK" : 25 , "DEF" : 15 , "HP" : 200},
+    "Chimera" : {"ATK" : 20 , "DEF" : 10 , "HP" : 150},
+    "Vampire" : {"ATK" : 18 , "DEF" : 12 , "HP" : 120},
+    "Werewolf" : {"ATK" : 22 , "DEF" : 8 , "HP" : 100},
+    "Curse Spirit" : {"ATK" : 12 , "DEF" : 6 , "HP" : 60},
+    "Beast II" : {"ATK" : 30 , "DEF" : 30 , "HP" : 300},
+    "Cosmic Being" : {"ATK" : 50 , "DEF" : 50 , "HP" : 500},
+}
