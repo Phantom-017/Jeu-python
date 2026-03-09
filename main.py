@@ -8,8 +8,7 @@ def display_main_menu():
     print("1. Démarrer une nouvelle expédition\n 2. Afficher le classement\n 3. Quitter le jeu")
 
 def is_valid_number(saisi, min_val, max_val):
-    saisi = input("Saisissez un nombre")
-    if not saisi.numeric:
+    if not saisi.isnumeric():
         return False
     if int(saisi) < min_val :
         return False
@@ -20,10 +19,6 @@ def is_valid_number(saisi, min_val, max_val):
 
 
 def get_valid_number(saisi, min_val, max_val, message):
-    min_val = 1
-    max_val = 3
-    message = "Veuillez saisir un nombre entre 1 et 3"
-    print("Saisissez une valeur")
     # Boucle tant que saisi invalide
     while True :
         # Entrer une valeur
@@ -37,5 +32,3 @@ def get_valid_number(saisi, min_val, max_val, message):
         # valeur valide (entre le min et le max) alors on renvoie
         else :
             return True
-        
-get_valid_number(saisi, min_val, max_val, message)
