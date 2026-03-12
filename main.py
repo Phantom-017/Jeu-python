@@ -50,7 +50,7 @@ def main():
             show_leaderboard()
         # Si la valeur est 3 alors on arrête le programme
         if user_choice == 3 :
-            quit()
+            exit()
 
 def show_leaderboard():
     # Numéroté le classement des joueurs avec une variable
@@ -63,9 +63,6 @@ def show_leaderboard():
         # Augmente la valeur de la variable pour numéroté le joueur suivant
         p = p + 1
 
-def quit():
-    while True:
-        break
 
 def start_game():
     # Entrer un username
@@ -85,48 +82,75 @@ def create_team():
     heroes_avail_list = get_heroes_db()
     # Choisir 3 héros pour compléter le trio à l'aide d'une boucle
     for i in range(3):
-        # Message informant la saisi du numéro d'un héros à choisir
-        print("Choisissez un héros en saisissant son numéro :\n")
         # Afficher tous les héros disponibles
-        show_heroes(heroes_avail_list)
+        show_heroes(heroes_avail_list)       
         # Choisir un héros en saisissant son numéro
-        choose_heroes = get_heroes_db()
+        choose_heroes = heroes_avail_list[get_valid_number(0, 9, "Veuillez saisir le numéro du héros que vous souhaitez :")]
+        # Enlever le héros choisi de la liste des héros disponibles
+        heroes_avail_list.remove(choose_heroes)
         # Ajouter le héros choisi dans l'équipe
         team.append(choose_heroes)
-        # Enlever le héros choisi de la liste des héros disponibles
-        choose_heroes.remove()
-    # Afficher l'équipe
-    print(team)
+        # Afficher l'équipe pour vérifier que le héros a bien été ajouté dans l'équipe
+        print("Voici votre équipe :", team)
 
 
 def get_heroes_db():
+    # Liste vide des héros
     heroes_list = []
-    # chercher les heros dans la db 
-    heroes = collection_heroes.find()
-    # pour chaque entree ajouter a la liste des heros
+    # Chercher les héros dans la db 
+    heroes = collection_heroes.find({}, {"NAME":1, "ATK":1, "DEF":1, "HP":1, "_id":0})
+    # pour chaque entree ajouter à la liste des heros
     for entree in heroes:
         heroes_list.append(entree)
+    # Retourner la liste des héros
     return heroes_list
 
 
 def show_heroes(heroes):
-    # Liste vide des héros
     # Numéroté les héros avec une variable
-    n = 1
-    # Trouver les héros dans la base
+    n = 0
     # Créer une boucle qui va lister un par un tous les héros avec leurs informations
     for i in heroes :
         # Afficher les héros
         print(f"{n}. Name : {i["NAME"]}, ATK : {i["ATK"]}, DEF : {i["DEF"]}, HP : {i["HP"]}\n ")
-        #print(heroes_list)
         # Augmente la valeur de la variable pour numéroté le héros suivant
         n = n + 1
 
 
-#heroes_avail_list = get_heroes_db()
+def launch_fight():
+    # Afficher que l'expédition commence
+    print("======== L'expédition commence ! ========")
+    # Générer aléatoirement depuis la db un monstre à affronter avec ses stats affichées
+    generate_random_monster = get_monsters
+    # Fonctionnement du jeu en tour par tour
+    # Le jeu commence vague 0
+    # Tant que la valeur des PV des 3 héros ou du monstre n'est pas 0 alors le jeu continue
+    # Tour des héros: les héros attaque le monstre
+    # Réduction des PV du monstre en fonction de l'ATK des héros et de la DEF du monstre
+    # Tour du monstre : le monstre attaque aléatoirement unn héros
+    # Réduction des PV du héros attaqué en fonction de l'ATK du monstre et de la DEF du monstre
+    # Si les PV du monstre atteignent 0 alors les héros ont gagné
+    # Incrémentation de 1 des vague
+    # Nouveau monstre généré aléatoirement
+    # Les héros gardent les PV de la partie précédente il n'y a donc pas de récupération
+    # Dans le cas contraire si les PV de tous les héros atteignent 0
+    # Arrêt du jeu et sauvegarde des vagues
 
-#show_heroes(heroes_avail_list)
 
-create_team()
+def get_monsters_db():
+    # Liste vide des monstres
+    monsters_list = []
+    # Chercher les monstres dans la db 
+    monsters = collection_monsters.find({}, {"NAME":1, "ATK":1, "DEF":1, "HP":1, "_id":0})
+    # pour chaque entree ajouter à la liste des monstres
+    for entree in monsters:
+        monsters_list.append(entree)
+    # Retourner la liste des monstres
+    return monsters_list
+
+
+def random_monster(monsters):
+    # Choisir un monstre aléatoirement avec ses informations
+
 
 #main()
